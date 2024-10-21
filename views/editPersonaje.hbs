@@ -1,0 +1,22 @@
+<h1>Editar Personaje</h1>
+<form action="/personajes/edit/{{personaje._id}}" 
+    method="post"
+    enctype="multipart/form-data"></form>
+    
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre" value="{{personaje.nombre}}" required> <br><br>
+    
+    <label for="edad">Edad</label>
+    <input type="number" name="edad" value="{{personaje.edad}}" required> <br><br>
+    
+    <label for="casa">Casa</label>
+    <input type="text" name="casa" value="{{personaje.casa}}" required> <br><br>
+    
+    <label for="rol">Rol</label>
+    <input type="text" name="rol" value="{{personaje.rol}}" required> <br><br>
+
+    <label for="imagen">Imagen</label>
+    <input type="file" id="imagen" name="imagen" accept=".jpg, .jpge, .png" required>
+
+    <button type="submit">Actualizar personaje</button>
+</form>

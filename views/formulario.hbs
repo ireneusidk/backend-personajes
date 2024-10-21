@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Personaje</title>
+</head>
+<body>
+    <h1>Crear Personaje</h1>
+    
+   {{#if error}}
+        <div style="color:red;">{{error}}</div>
+    {{/if}}
+{{!-- Otra forma de mostrar el mensaje en el mismo form una vez enviado --}}
+    {{!-- {{#if success}}
+        <div class="alert alert-success">
+            <p>{{success}}</p>
+            <ul>
+                <li><strong>Nombre del archivo:</strong> {{uploadDetails.filename}}</li>
+                <li><strong>Tipo de archivo:</strong> {{uploadDetails.filetype}}</li>
+                <li><strong>Tamaño del archivo:</strong> {{uploadDetails.filesize}} bytes</li>
+            </ul>
+        </div>
+    {{/if}} --}}
+    {{!-- forma de mostrar los datos en un "alert" --}}
+        {{#if success}}
+        <script>
+            const detallesArchivo = `
+                Archivo subido correctamente:
+                - Nombre: {{uploadDetails.filename}}
+                - Tipo: {{uploadDetails.filetype}}
+                - Tamaño: {{uploadDetails.filesize}} bytes
+            `;
+            alert(detallesArchivo);
+            setTimeout(() => {
+                window.location.href = "/personajes";  // Redirigimos a la tabla después de mostrar el mensaje
+            }, 1000);  
+        </script>
+    {{/if}}
+    <form action="/personajes/crear" method="post" onsubmit="return validateForm()" enctype="multipart/form-data">
+        <input type="text" name="nombre" required> <br><br>
+
+        <label for="edad">Edad</label>
+        <input type="number" name="edad" required> <br><br>
+
+        <label for="casa">Casa</label>
+        <input type="text" name="casa" required> <br><br>
+
+        <label for="rol">Rol</label>
+        <input type="text" name="rol" required> <br><br>
+    <label for="imagen">Imagen</label>
+    <input type="file" id="imagen" name="imagen" accept=".jpg, .jpge, .png" required>
+        {{!-- <label for="rol">Imagen</label>
+        <input type="file" id="rol" name="imagen" accept=".jpg, .jpge, .png"> --}}
+        <button type="submit">Crear personaje</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            const nombre = document.forms[0]["nombre"].value;
+            const edad = document.forms[0]["edad"].value;
+            const casa = document.forms[0]["casa"].value;
+            const rol = document.forms[0]["rol"].value;
+
+            if (!nombre || !edad || !casa || !rol) {
+                alert("Por favor, completa todos los campos obligatorios.");
+                return false; // Previene el envío del formulario
+            }
+            return true; // Permite el envío del formulario
+        }
+    </script>
+</body>
+</html>
