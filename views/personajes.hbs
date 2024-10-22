@@ -19,8 +19,8 @@
             <p>Casa: {{casa}}</p>
             <p>Rol: {{rol}}</p>
         </li>
-        <a href="/personajes/edit/{{this._id}}" class="btn"><i class="fa-regular fa-pen-to-square"></i> Editar</a>
-        <a href="/personajes/delete/{{this._id}}" class="btn"><i class="fas fa-trash"></i> Eliminar</a>
+        <a href="/personajes/edit/{{this._id}}" class="btn"> Editar</a>
+        <a href="/personajes/delete/{{this._id}}" class="btn"> Eliminar</a>
         {{/each}}
         </ul>
    
@@ -52,8 +52,8 @@
             <td>{{this.casa}}</td>
             <td>{{this.rol}}</td>
             <td>
-                <a href="/personajes/edit/{{this._id}}" class="btn">Editar</a>
-                <a href="/personajes/delete/{{this._id}}" class="btn">Eliminar</a>
+                <a href="/personajes/edit/{{this._id}}" class="btn"><i class="fa-regular fa-pen-to-square"></i> Editar</a>
+                <a href="/personajes/delete/{{this._id}}" class="btn"><i class="fas fa-trash"></i> Eliminar</a>
             </td>
             <td>
                 {{#if this.fechaEdicion}}
